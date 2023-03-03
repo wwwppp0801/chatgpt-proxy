@@ -1,0 +1,7 @@
+#从openai.com获取app_key
+
+[main]
+organization = ""
+api_key = ""
+# 选择一个gpt模型
+model = "gpt-3.5-turbo"
