@@ -71,20 +71,20 @@ def ask_openai(question, user_id):
 
 
 with gr.Blocks() as interface:
-    gr.Markdown(
-"""
-# Hello World!
-Start typing below to see the output.
-```python
-def bubble_sort(arr):
-    n = len(arr)
-    for i in range(n):
-        for j in range(0, n-i-1):
-            if arr[j] > arr[j+1]:
-                arr[j], arr[j+1] = arr[j+1], arr[j]
-    return arr
-```
-""")
+#    gr.Markdown(
+#"""
+## Hello World!
+#Start typing below to see the output.
+#```python
+#def bubble_sort(arr):
+#    n = len(arr)
+#    for i in range(n):
+#        for j in range(0, n-i-1):
+#            if arr[j] > arr[j+1]:
+#                arr[j], arr[j+1] = arr[j+1], arr[j]
+#    return arr
+#```
+#""")
     with gr.Row():
         user_id_box = gr.Textbox(label="UserId",value=lambda:str(time.time())) # 创建一个输入框组件，并赋值给question_box变量，方便后续操作
         new_session_btn = gr.Button(value="NewSession")
