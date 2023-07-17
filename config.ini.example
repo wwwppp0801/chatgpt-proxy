@@ -1,7 +1,16 @@
 #从openai.com获取app_key
 
 [main]
-organization = ""
-api_key = ""
+organization=
+api_key=
 # 选择一个gpt模型
-model = "gpt-3.5-turbo"
+model=gpt-3.5-turbo
+
+azure=1
+#openai.api_key = os.getenv("AZURE_OPENAI_KEY")
+azure_api_key=
+#openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT") # your endpoint should look like the following https://YOUR_RESOURCE_NAME.openai.azure.com/
+azure_end_point=
+azure_deploy=
+# your endpoint should look like the following https://YOUR_RESOURCE_NAME.openai.azure.com/
+

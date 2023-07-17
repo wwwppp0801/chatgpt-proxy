@@ -15,6 +15,10 @@ config.read("config.ini")
 organization=config.get("main", "organization")
 api_key=config.get("main", "api_key")
 model=config.get("main", "model")
+azure=config.get("main", "azure",fallback=None)
+azure_api_key=config.get("main", "azure_api_key",fallback=None)
+azure_end_point=config.get("main", "azure_end_point",fallback=None)
+azure_deploy=config.get("main", "azure_deploy",fallback=None)
 print(organization,api_key,model)
 
 
@@ -22,6 +26,16 @@ print(organization,api_key,model)
 # 设置组织ID和API密钥
 openai.organization = organization
 openai.api_key = api_key
+
+if azure:
+    openai.api_key = azure_api_key
+    api_key=azure_api_key
+    #openai.api_base = os.getenv("AZURE_OPENAI_ENDPOINT") # your endpoint should look like the following https://YOUR_RESOURCE_NAME.openai.azure.com/
+    openai.api_base = azure_end_point # your endpoint should look like the following https://YOUR_RESOURCE_NAME.openai.azure.com/
+    openai.api_type = 'azure'
+    openai.api_version = '2023-05-15' # this may change in the future
+
+
 
 # 选择一个gpt模型
 model = model
@@ -46,6 +60,7 @@ def ask_openai(question, user_id):
             )
     print(context)
     response = openai.ChatCompletion.create(
+        engine=azure_deploy,
         model=model,
         messages=context["messages"],
         temperature=0,
